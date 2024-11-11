@@ -6,7 +6,6 @@ import apiv1 from "./apiv1";
 import Backends from "./backend";
 import App from "./app";
 import Backend from "./backend/backend";
-import config from "config";
 
 if (!("BACKEND" in process.env)) {
 	console.error("BACKEND environment variable not defined");
@@ -15,19 +14,17 @@ if (!("BACKEND" in process.env)) {
 	console.error(`Invalid backend ${process.env.BACKEND}`);
 	process.exit(1);
 }
-console.log(`Using backend ${process.env.BACKEND}`);
+console.log(`Using backend ${process.env.BACKEND?.toUpperCase()}`);
 
 let port = 8080;
 if ("API_PORT" in process.env) {
 	port = parseInt(process.env.API_PORT as string);
 }
 
-console.log(config.get("users"));
-
 const app: App = {
 	backend: null as unknown as Backend,
 };
-app.backend = new Backends[process.env.BACKEND as string](app);
+app.backend = new Backends[(process.env.BACKEND as string).toUpperCase()](app);
 const expressApp = express();
 
 expressApp.use(compression());

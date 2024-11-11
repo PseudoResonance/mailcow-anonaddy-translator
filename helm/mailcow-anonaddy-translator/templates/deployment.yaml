@@ -27,7 +27,6 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "mailcow-anonaddy-translator.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -46,12 +45,48 @@ spec:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.volumeMounts }}
           volumeMounts:
+            - name: config
+              mountPath: /config
+              readOnly: true
+          {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
-      {{- with .Values.volumes }}
+          env:
+            - name: BACKEND
+              value: "{{ .Values.backend.type }}"
+            - name: API_PORT
+              value: "{{ .Values.service.port }}"
+            {{- if eq .Values.backend.type "MAILCOW" }}
+            - name: MAILCOW_API_ENDPOINT
+              {{- if and .Values.backend.mailcow.existingSecretName .Values.backend.mailcow.endpointKey }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.backend.mailcow.existingSecretName }}
+                  key: {{ .Values.backend.mailcow.endpointKey }}
+              {{- else }}
+              value: "{{ .Values.backend.mailcow.endpoint }}"
+              {{- end }}
+            - name: MAILCOW_API_KEY
+              {{- if and .Values.backend.mailcow.existingSecretName .Values.backend.mailcow.apiKeyKey }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.backend.mailcow.existingSecretName }}
+                  key: {{ .Values.backend.mailcow.apiKeyKey }}
+              {{- else }}
+              value: "{{ .Values.backend.mailcow.apiKey }}"
+              {{- end }}
+            - name: MAILCOW_API_SOGO_VISIBLE
+              value: "{{ .Values.backend.mailcow.sogoVisible }}"
+            {{- end }}
       volumes:
+        - name: config
+          secret:
+            secretName: {{ .Values.users.existingSecretName }}
+            items:
+              - key: {{ .Values.users.configKey }}
+                path: default.json
+      {{- with .Values.volumes }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.nodeSelector }}
