@@ -5,6 +5,9 @@ export default class Backend {
 	constructor(app: App) {
 		this.app = app;
 	}
-	createAlias: (alias: string, forwardTo: string) => Promise<boolean> =
-		async () => false;
+	createAlias: (
+		alias: string,
+		forwardTo: string,
+		comment: string,
+	) => Promise<boolean> = async () => false;
 }

@@ -60,6 +60,7 @@ export default (app: App) => {
 			const result = await app.backend.createAlias(
 				`${alias}@${req.body.domain}`,
 				user.email,
+				"description" in req.body ? req.body.description : "",
 			);
 			if (!result) {
 				throw new BackendError("Failed to create alias");

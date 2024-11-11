@@ -1,6 +1,6 @@
 {
 	"name": "mailcow-anonaddy-translator",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"private": true,
 	"description": "Translates anonaddy alias requests to mailcow for Bitwarden",
 	"main": "src/index.ts",

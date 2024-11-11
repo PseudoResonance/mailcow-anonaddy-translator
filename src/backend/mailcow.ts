@@ -28,7 +28,7 @@ export default class Mailcow extends Backend {
 			}
 		}
 	}
-	createAlias = async (alias: string, forwardTo: string) => {
+	createAlias = async (alias: string, forwardTo: string, comment: string) => {
 		try {
 			console.log(`Creating alias ${alias} to ${forwardTo}`);
 			const response = await fetch(
@@ -38,6 +38,7 @@ export default class Mailcow extends Backend {
 					body: JSON.stringify({
 						active: "1",
 						sogo_visible: this.sogo_visible,
+						public_comment: comment,
 						address: alias,
 						goto: forwardTo,
 					}),
