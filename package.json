@@ -1,0 +1,46 @@
+{
+	"name": "mailcow-anonaddy-translator",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Translates anonaddy alias requests to mailcow for Bitwarden",
+	"main": "src/index.ts",
+	"scripts": {
+		"dev": "nodemon src/index.ts",
+		"build": "npx tsc && npx tsc-alias && npx esbuild build/transpiled/index.js --bundle --platform=node --outfile=build/esbuild/index.cjs && node pkg.cjs"
+	},
+	"bin": "build/esbuild/index.cjs",
+	"pkg": {
+		"scripts": [
+			"build/esbuild/index.cjs"
+		],
+		"assets": [],
+		"targets": [
+			"node20-linuxstatic-x64"
+		],
+		"outputPath": "dist"
+	},
+	"type": "module",
+	"author": "PseudoResonance",
+	"devDependencies": {
+		"@types/compression": "^1.7.5",
+		"@types/config": "^3.3.5",
+		"@types/express": "^5.0.0",
+		"@types/node-fetch": "^2.6.11",
+		"esbuild": "0.24.0",
+		"nodemon": "^3.1.7",
+		"prettier": "3.3.3",
+		"tsc-alias": "^1.8.10",
+		"tsx": "^4.19.2",
+		"typescript": "^5.6.3",
+		"typescript-eslint": "^8.13.0"
+	},
+	"dependencies": {
+		"body-parser": "^1.20.3",
+		"compression": "^1.7.5",
+		"config": "^3.3.12",
+		"dotenv": "^16.4.5",
+		"express": "^4.21.1",
+		"node-fetch": "^3.3.2",
+		"uuid": "^11.0.3"
+	}
+}

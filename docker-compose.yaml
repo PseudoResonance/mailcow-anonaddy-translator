@@ -1,0 +1,8 @@
+services:
+    mailcow-anonaddy-translator:
+        build: .
+        env_file: .env
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./config/default.json:/config/default.json

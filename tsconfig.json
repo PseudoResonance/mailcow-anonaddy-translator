@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"lib": ["esnext"],
+		"allowJs": false,
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ESNext",
+		"outDir": "./build/transpiled",
+		"importHelpers": false,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"incremental": true,
+		"paths": {
+			"@/*": ["./src/*"]
+		}
+	},
+	"include": ["**/*.ts"],
+	"exclude": ["node_modules"]
+}
