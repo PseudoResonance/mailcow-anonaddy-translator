@@ -30,7 +30,7 @@ async function main() {
 		JSON.stringify(pkgJson, null, 2),
 	);
 
-	exec(`pkg ./${outputDir}`, (error, stdout, stderr) => {
+	exec(`npx pkg ./${outputDir}`, (error, stdout, stderr) => {
 		if (error) {
 			console.error(`${error.message}`);
 			return;

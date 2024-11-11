@@ -26,6 +26,7 @@
 		"@types/config": "^3.3.5",
 		"@types/express": "^5.0.0",
 		"@types/node-fetch": "^2.6.11",
+		"@yao-pkg/pkg": "^6.1.0",
 		"esbuild": "0.24.0",
 		"nodemon": "^3.1.7",
 		"prettier": "3.3.3",

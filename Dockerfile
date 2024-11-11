@@ -1,6 +1,8 @@
 FROM node:20-alpine AS builder
-COPY ./ /opt
+COPY package.json package-lock.json /opt
 WORKDIR /opt
+RUN npm install
+COPY ./ /opt
 RUN npm run build
 
 FROM alpine:3
