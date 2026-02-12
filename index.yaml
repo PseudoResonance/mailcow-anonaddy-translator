@@ -3,6 +3,16 @@ entries:
   mailcow-anonaddy-translator:
   - apiVersion: v2
     appVersion: 1.0.1
+    created: "2026-02-12T09:35:41.750046166Z"
+    description: Deploys an app to translate anonaddy requests to mailcow.
+    digest: 790f0362b84e77483c9c4280b47475f38476a5c2dd05252c4725b52a44e03109
+    name: mailcow-anonaddy-translator
+    type: application
+    urls:
+    - https://github.com/PseudoResonance/mailcow-anonaddy-translator/releases/download/mailcow-anonaddy-translator-1.0.4/mailcow-anonaddy-translator-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
+    appVersion: 1.0.1
     created: "2026-02-12T09:29:02.758470566Z"
     description: Deploys an app to translate anonaddy requests to mailcow.
     digest: 485e86d47c0e31728a148425f07fc0047d595722632bac37ad8756f73a29585e
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://github.com/PseudoResonance/mailcow-anonaddy-translator/releases/download/mailcow-anonaddy-translator-1.0.2/mailcow-anonaddy-translator-1.0.2.tgz
     version: 1.0.2
-generated: "2026-02-12T09:29:02.758479042Z"
+generated: "2026-02-12T09:35:41.750062006Z"
