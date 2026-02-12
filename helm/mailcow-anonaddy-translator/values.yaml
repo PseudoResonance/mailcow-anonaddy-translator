@@ -134,3 +134,21 @@ dnsConfig: {}
   # options:
   #   - name: ndots
   #     value: "1"
+
+extraObjects: []
+  # - apiVersion: traefik.io/v1alpha1
+  #   kind: Middleware
+  #   metadata:
+  #     name: cors-middleware
+  #     namespace: mynamespace
+  #   spec:
+  #     headers:
+  #       accessControlAllowMethods:
+  #         - "OPTIONS"
+  #         - "POST"
+  #       accessControlAllowHeaders:
+  #         - "*"
+  #       accessControlAllowOriginList:
+  #         - "https://bitwarden.example.com"
+  #       accessControlMaxAge: 3600
+  #       addVaryHeader: false
