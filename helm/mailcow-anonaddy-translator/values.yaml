@@ -127,3 +127,10 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+dnsConfig: {}
+  # searches:
+  #   - cluster.example
+  # options:
+  #   - name: ndots
+  #     value: "1"
